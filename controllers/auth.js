@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const register = async (req, res) => {
     const user = await User.create({ ...req.body });
     res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token: user.generateJWT() });
+    console.log("succesful registration!");
 }
 const login = async (req, res) => {
     const { email, password } = req.body;
@@ -26,6 +27,8 @@ const login = async (req, res) => {
     if (isPasswordCorrect) {
         const token = user.generateJWT();
         res.status(StatusCodes.OK).json({ user: { name: user.name }, token });
+        console.log("succesful login!");
+        
     } else {
         // throw new UnauthenticatedError(`User is not authorized!`);
         throw new Error(`User is not authorized!`);

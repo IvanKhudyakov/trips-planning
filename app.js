@@ -23,17 +23,19 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.set('trust proxy', 1);
 app.use(rateLimiter({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes). 
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes). 
 }));
 app.use(express.json());
 // extra packages
 app.use(helmet());
 app.use(cors());
 app.use(xss());
+app.use(express.static("public"));
+
 // routes
 app.use('/auth', authRouter);
-app.use('/trips', tripRouter);
+app.use('/trips', authenticateUser, tripRouter);
 // app.use('trips', authenticateUser, tripRouter);
 
 
@@ -44,14 +46,14 @@ app.use('/trips', tripRouter);
 const port = process.env.PORT || 3000;
 
 const start = async () => {
-  try {
-    await connectDB(process.env.MONGO_URI);
-    app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
-    );
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+        await connectDB(process.env.MONGO_URI);
+        app.listen(port, () =>
+            console.log(`Server is listening on port ${port}...`)
+        );
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 start();

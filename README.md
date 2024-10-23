@@ -8,10 +8,10 @@ The **Trips Planning** tool is designed to help users organize their trips effec
 ### Features and Functionality
 The project includes the following features:
 - **User Authentication**: Register and authenticate users. **DONE** on both Front and Back
-- **Trip Management**: Create, copy, delete, and update trips. **DONE** on backend, failed to make ADD and EDIT to work on the frontend.
-- **Weather Forecasting**: Retrieve weather forecasts for trip destinations using a public API. **DONE** using external API and additional npm package (utils/weather.js)
-- **Preparation Checklist**: Generate a list of preparation activities as a checklist. **DONE** recommendations with generated URLs based on trip information
-- **Luggage Recommendations**: Get recommendations for packing and generate a checklist. **DONE** recommendations based on forecast and trip duration
+- **Trip Management**: Create, copy, delete, and update trips. **DONE** on both Front and Back
+- **Weather Forecasting**: Retrieve weather forecasts for trip destinations using a public API. **DONE** using external API and additional npm package (utils/weather.js) 
+- **Preparation Checklist**: Generate a list of preparation activities as a checklist. **DONE** recommendations based on trip information
+- **Luggage Recommendations**: Get recommendations for packing and generate a checklist. **DONE** recommendations based on weather forecast and trip info
 
 ### Data Models
 - **Users**: 

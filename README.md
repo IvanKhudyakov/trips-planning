@@ -1,15 +1,55 @@
-# trips-planning
-CTD final project
+# Trips Planning
 
-Proposal Project Concept: The tool will help to organize trips. The idea is to have a tool to help in planing trips and simplify the preparation activities.
+## CTD Final Project
 
-Project Features/Functions: what additional features or functionality will your project include? (ex. login, authentication, testing, etc.)
-Proposal Project Data Models: Users: username, name, last name, email, home city
-Trips: destination, duration, start date, goal (1-n to user)
-Actions: type, mandatory, status (1-n connection to trips)
-Proposal Project Features: Register and authenticate.
-Create trip (maybe reusing template)
-Get the weather forecast for the trip from some public API
-Generate the list of prep activities as a checklist
-Get recommendations for luggage packing and ability to generate the checklist
+### Project Concept
+The **Trips Planning** tool is designed to help users organize their trips effectively. Its purpose is to simplify the preparation activities involved in planning trips.
 
+### Features and Functionality
+The project includes the following features:
+- **User Authentication**: Register and authenticate users. **DONE** on both Front and Back
+- **Trip Management**: Create, copy, delete, and update trips. **DONE** on backend, failed to make ADD and EDIT to work on the frontend.
+- **Weather Forecasting**: Retrieve weather forecasts for trip destinations using a public API. **DONE** using external API and additional npm package (utils/weather.js)
+- **Preparation Checklist**: Generate a list of preparation activities as a checklist. **DONE** recommendations with generated URLs based on trip information
+- **Luggage Recommendations**: Get recommendations for packing and generate a checklist. **DONE** recommendations based on forecast and trip duration
+
+### Data Models
+- **Users**: 
+  - Name
+  - Last Name
+  - Email
+  - Home City
+  - Password
+- **Trips**: 
+  - Destination
+  - Duration
+  - Start Date
+  - Reason
+  - Created By (1-n relationship to User)
+
+### Getting Started
+Follow the steps below to run the project locally:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/IvanKhudyakov/trips-planning
+
+2. **Create a .env File**: Create a .env file in the root directory of the project with the following parameters:
+   ```bash
+    MONGO_URI=your_mongo_uri_here
+    JWT_SECRET=your_jwt_secret_here
+    JWT_LIFETIME=24h
+    PORT=3000
+
+3. **Install Dependencies**:Navigate to the project directory:
+   ```bash
+   cd trips-planning
+   ```
+    Then run 
+   ```bash
+   npm install
+   ```
+
+4. **Start the Server**:
+   ```bash
+   npm start

@@ -1,25 +1,32 @@
-import { enableInput, inputEnabled, message, setToken } from "./index.js";
+import { enableInput, inputEnabled, message, setDiv, setToken } from "./index.js";
 import { showTrips } from "./trips.js"
 
+let loginDiv = document.getElementById("logon-div");
+let registerDiv = document.getElementById("register-div");
+
 export const showRegister = () => {
-    const registerForm = document.getElementById("register-form");
-    const loginForm = document.getElementById("login-form");
     const registerUrl = document.getElementById("register-link");
+
+    loginDiv.style.display = "block";
+    registerDiv.style.display = "none";
 
     registerUrl.addEventListener("click", (e) => {
         e.preventDefault();
-        loginForm.style.display = "none";
-        registerForm.style.display = "inline";
+        loginDiv.style.display = "none";
+        registerDiv.style.display = "block";
+        setDiv(registerDiv);
     });
+
 };
 
 export const handleLogin = () => {
-    const loginForm = document.getElementById("login-form");
+    // setDiv(loginDiv);
+    // const loginForm = document.getElementById("login-form");
     const logon = document.getElementById("login-button");
     const email = document.getElementById("email");
     const password = document.getElementById("password");
 
-    loginForm.addEventListener("click", async (e) => {
+    loginDiv.addEventListener("click", async (e) => {
         e.preventDefault();
         if (inputEnabled && e.target.nodeName === "BUTTON") {
             if (e.target === logon) {
@@ -44,7 +51,6 @@ export const handleLogin = () => {
 
                         email.value = "";
                         password.value = "";
-
                         showTrips();
                     } else {
                         message.textContent = data.msg;
@@ -65,9 +71,9 @@ export const handleRegister = () => {
     const registerForm = document.getElementById("register-form");
     const register = document.getElementById("register-button");
     registerForm.addEventListener("click", async (e) => {
-        if (e.target === register) {
-            console.log("test");
-            // e.preventDefault();
+        if (inputEnabled && e.target === register) {
+            // console.log("test");
+            e.preventDefault();
             const name = document.getElementById("name");
             const lastname = document.getElementById("lastname");
             const homecity = document.getElementById("homecity");
@@ -108,8 +114,9 @@ export const handleRegister = () => {
                         showTrips();
                     }
                     //not to display the password on the screen. The default message is unsecure: "Path `password` (`123`) is shorter than the minimum allowed length (6)."
-                    else if (data.msg.includes("Path `password` ")) {
-                        message.textContent = 'The password is shorter than the minimum allowed length (6).';
+                    else if (data.msg.includes("Path `")) {
+                        let errorCause = data.msg.split('`')[1];
+                        message.textContent = `The value for the field ${errorCause} doesn't meet the requirement. Please verify and update accordingly.`;
                     }
                     else {
                         message.textContent = data.msg;
@@ -132,6 +139,8 @@ export const handleLogoff = () => {
     logoff.addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.removeItem("token");
+        setToken(null);
+        message.textContent = "You have been logged off.";
         window.location.href = "/";
     });
 };

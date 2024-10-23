@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     },
     homecity: {
         type: String,
-        required: [true, 'Please provide the last name'],
+        required: [true, 'Please provide the homecity'],
         match: [
             /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/, 'Please provide the valid city name'
         ],

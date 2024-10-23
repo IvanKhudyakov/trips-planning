@@ -12,7 +12,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
+    overflow-y: auto; 
 }
 
 /* Container for the login form */
@@ -22,8 +23,10 @@ body {
     padding: 40px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 800px;
     width: 100%;
+    overflow-x: auto;
+    max-height: auto;
 }
 
 /* Logo styling */
@@ -89,4 +92,147 @@ h1 {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+/* Table container styling */
+#trips-table {
+    width: 100%;
+    max-width: 800px;        /* Same as the login form container */
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header row styling */
+#trips-table-header th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+}
+
+/* Table row and cell styling */
+#trips-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+/* Alternate row background for better readability */
+#trips-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Button styling (matching the login button style) */
+.editButton,
+.deleteButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.editButton {
+    background-color: #ffc107;
+    color: white;
+}
+
+.editButton:hover {
+    background-color: #e0a800;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+}
+
+#add-trip {
+    display: block;
+    margin: 20px auto; /* Centers the button horizontally */
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #28a745; /* Green color to indicate action */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect */
+#add-trip:hover {
+    background-color: #218838;
+}
+/* Styling for the edit-trip form container */
+#edit-trip {
+    display: none;
+    background-color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Input fields within the edit form */
+#edit-trip input,
+#edit-trip select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Label styling */
+#edit-trip label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+/* Styling for the buttons inside the edit form */
+#edit-trip button {
+    width: 48%; /* Allows buttons to align side-by-side */
+    margin: 10px 1%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Add Trip Button - Green */
+#adding-trip {
+    background-color: #28a745;
+    color: white;
+}
+
+#adding-trip:hover {
+    background-color: #218838;
+}
+
+/* Cancel Button - Red */
+#edit-cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+#edit-cancel:hover {
+    background-color: #c82333;
 }

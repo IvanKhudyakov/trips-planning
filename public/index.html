@@ -11,45 +11,48 @@
 <body>
     <div class="container">
         <img src="logo.png" alt="Website Logo" id="home-logo" class="logo" width="150%" height="150%">
-        <p id="message"></p>
-        <form class="form" id="login-form">
-            <h1>Welcome to TripWise</h1>
-            <!-- <form class="form" id="login-form" style="display:none;"> -->
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" required>
+        <div>
+            <p id="message"></p>
+        </div>
+        <div id="logon-div" style="display:none;">
+            <form class="form" id="login-form">
+                <h1>Welcome to TripWise</h1>
+                <!-- <form class="form" id="login-form" style="display:none;"> -->
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
 
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
 
-            <button type="submit" class="login-button" id="login-button">Log In</button>
-            <a href="" id="register-link" class="link">Register</a>
-        </form>
-        <!-- <form class="form" id="register-form"> -->
-        <form class="form" id="register-form" style="display:none;">
-            <h1>Join TripWise</h1>
-            <label for="name" class="sr-only">Name</label>
-            <input type="name" id="name" name="name" placeholder="Name" required>
-            <label for="lastname" class="sr-only">Last Name</label>
-            <input type="lastname" id="lastname" name="lastname" placeholder="Last Name" required>
-            <label for="homecity" class="sr-only">Home City</label>
-            <input type="homecity" id="homecity" name="homecity" placeholder="Home City" required>
+                <button type="submit" class="login-button" id="login-button">Log In</button>
+                <a href="" id="register-link" class="link">Register</a>
+            </form>
+        </div>
+        <div id="register-div" style="display:none;">
+            <form class="form" id="register-form">
+                <h1>Join TripWise</h1>
+                <label for="name" class="sr-only">Name</label>
+                <input type="name" id="name" name="name" placeholder="Name" required>
+                <label for="lastname" class="sr-only">Last Name</label>
+                <input type="lastname" id="lastname" name="lastname" placeholder="Last Name" required>
+                <label for="homecity" class="sr-only">Home City</label>
+                <input type="homecity" id="homecity" name="homecity" placeholder="Home City" required>
 
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" id="email1" name="email" placeholder="Email" required>
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" id="email1" name="email" placeholder="Email" required>
 
-            <label for="password1" class="sr-only">Password</label>
-            <input type="password" id="password1" name="password1" placeholder="Enter the password (Min 6 symbols)"
-                required>
-            <label for="password2" class="sr-only">Confirm Password</label>
-            <input type="password" id="password2" name="password2" placeholder="Confirm the password" required>
+                <label for="password1" class="sr-only">Password</label>
+                <input type="password" id="password1" name="password1" placeholder="Enter the password (Min 6 symbols)"
+                    required>
+                <label for="password2" class="sr-only">Confirm Password</label>
+                <input type="password" id="password2" name="password2" placeholder="Confirm the password" required>
 
-            <button type="submit" class="login-button" id="register-button">Register</button>
-            <a href="" id="register-link" class="link">Cancel</a>
-        </form>
-        <div id="test-trips" style="display:none;">
-            <p id="message0"></p>
-            <p id="message1"></p>
-            <p id="message2"></p>
+                <button type="submit" class="login-button" id="register-button">Register</button>
+                <a href="" id="cancel-link" class="link">Cancel</a>
+            </form>
+        </div>
+        <div id="trips" style="display:none;">
+            <p id="trips-message"></p>
             <table id="trips-table">
                 <tr id="trips-table-header">
                     <th>Destination</th>
@@ -59,8 +62,37 @@
                     <th colspan="2"></th>
                 </tr>
             </table>
-            <button type="button" id="add-trip">Add trip</button>
+            <button type="button" id="add-trip" style="display: block; margin: 0 auto">Add trip</button>
             <button type="submit" class="login-button" id="logoff">Log off</button>
+        </div>
+        <div id="edit-trip" style="display:none;">
+            <div id="weather-container"></div>
+            <form>
+                <div>
+                    <label for="destination">Destination:</label>
+                    <input type="text" id="destination" />
+                </div>
+                <div>
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" />
+                </div>
+                <div>
+                    <label for="duration">Duration:</label>
+                    <input type="text" id="duration" />
+                </div>
+                <div>
+                    <label for="reason">Trip reason:</label>
+                    <select id="reason">
+                        <option value="business">business</option>
+                        <option value="leasure">leasure</option>
+                    </select>
+                </div>
+                <div id="checklist-container">
+                    
+                </div>
+                <button type="button" id="adding-trip">Add</button>
+                <button type="button" id="edit-cancel">Cancel</button>
+            </form>
         </div>
     </div>
     <script src="./index.js" type="module"></script>

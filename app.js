@@ -36,12 +36,8 @@ app.use(express.static("public"));
 // routes
 app.use('/auth', authRouter);
 app.use('/trips', authenticateUser, tripRouter);
-// app.use('trips', authenticateUser, tripRouter);
-
-
-
-// app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 

@@ -1,3 +1,14 @@
+let activeDiv = null;
+export const setDiv = (newDiv) => {
+    if (newDiv != activeDiv) {
+        if (activeDiv) {
+            activeDiv.style.display = "none";
+        }
+        newDiv.style.display = "block";
+        activeDiv = newDiv;
+    }
+};
+
 export let inputEnabled = true;
 export const enableInput = (state) => {
     inputEnabled = state;
@@ -14,10 +25,9 @@ export const setToken = (value) => {
 };
 
 export let message = null;
-// import { showTrips, handleTrips } from "./trips.js";
 import { showRegister, handleLogin, handleRegister, handleLogoff } from "./handleLoginRegister.js";
-import { showTrips } from "./trips.js";
-// import { handleAddEdit } from "./addEdit.js";
+import { handleTrips, showTrips } from "./trips.js";
+import { handleAddEdit } from "./addEditDelete.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     token = localStorage.getItem("token");
@@ -25,17 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // handleLogoClick();
     showRegister();
     handleLogin();
+    handleTrips();
     handleRegister();
+    handleAddEdit();
+    if (token) {
+        showTrips();
+    };
     handleLogoff();
 });
-// handleTrips();
-// handleAddEdit();
-// if (token) {
-//     showTrips();
-// } else {
-//     showLoginRegister();
-// }
-
 
 // const handleLogoClick = () => {
 //     const logo = document.getElementById("home-logo");
